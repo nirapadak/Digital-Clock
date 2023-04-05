@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Digital Clock</h1>
+        <h1 class="Time"></h1>
+    </div>
+
+    <script>
+
+    function getTime(){
+        const objTime = new Date();
+        let hour=objTime.getHours();
+        let minute = objTime.getMinutes();
+        let second=objTime.getSeconds();
+
+        var myTimeAP= hour>=12 ? "PM": "AM";
+        hour = hour%12 || 12;
+        hour = hour<10 ? "0"+hour: hour;
+        minute =minute<10 ? "0"+minute: minute;
+        second =second<10 ? "0"+second: second;
+
+        var myRightTime= `${hour}: ${minute}: ${second} ${myTimeAP}`
+
+        document.querySelector('.Time').innerHTML=myRightTime;
+    }
+
+    setInterval(() => {
+        getTime();
+    }, 1000);
+
+    </script>
+</body>
+</html>
